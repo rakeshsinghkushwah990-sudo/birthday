@@ -1,0 +1,268 @@
+.mystery {
+  background: #0e1435;
+}
+.mystery-dusk,
+.mystery-night {
+  position: absolute;
+  inset: 0;
+  transition: opacity 3s ease;
+}
+.mystery-dusk {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(244, 166, 193, 0.35), transparent 55%),
+    linear-gradient(180deg, #3a2a6b 0%, #6b4489 55%, #b77aa5 100%);
+}
+.mystery-night {
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(80, 70, 160, 0.45), transparent 60%),
+    linear-gradient(180deg, #070b26 0%, #0e1435 45%, #1a2257 100%);
+}
+.mystery.is-open .mystery-dusk {
+  opacity: 0;
+}
+.mystery.is-open .mystery-night {
+  opacity: 1;
+}
+.mystery-content {
+  padding-top: 90px;
+}
+.mystery-teaser {
+  font-family: var(--font-script);
+  font-size: clamp(2.3rem, 7vw, 4rem);
+  line-height: 1.25;
+  max-width: 780px;
+  margin: 0 0 10px;
+  filter: drop-shadow(0 0 18px rgba(255, 170, 200, 0.55));
+}
+.mystery-teaser .emoji {
+  display: inline-block;
+  font-family: system-ui, sans-serif;
+  font-size: 0.62em;
+  margin-left: 0.12em;
+  animation: teaserBob 2.4s ease-in-out infinite;
+}
+.mystery-teaser .emoji + .emoji {
+  animation-delay: 0.4s;
+}
+@keyframes teaserBob {
+  50% {
+    transform: translateY(-6px) rotate(-6deg);
+  }
+}
+/* shimmering gold → pink text */
+.shiny {
+  background: linear-gradient(100deg, #ffe3a3 0%, #ffd6e5 30%, #fff6e0 45%, #f4a6c1 60%, #ffe3a3 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shinyFlow 6s linear infinite;
+  /* room for script swashes that reach past the letter box */
+  padding: 0.08em 0.14em;
+  margin: -0.08em -0.14em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+@keyframes shinyFlow {
+  to {
+    background-position: -220% 0;
+  }
+}
+.mystery-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 70px 0 14px;
+}
+.qmark {
+  position: absolute;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: #ffe3a3;
+  text-shadow: 0 0 12px rgba(255, 220, 150, 0.9);
+  animation: qfloat 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.q0 {
+  left: -50px;
+  top: 10px;
+  font-size: 2rem;
+}
+.q1 {
+  right: -54px;
+  top: 40px;
+  font-size: 2.6rem;
+  animation-delay: 0.8s;
+}
+.q2 {
+  left: -30px;
+  bottom: 30px;
+  font-size: 1.5rem;
+  animation-delay: 1.6s;
+}
+.q3 {
+  right: -24px;
+  bottom: 10px;
+  font-size: 1.4rem;
+  animation-delay: 2.2s;
+}
+.q4 {
+  left: 50%;
+  top: -40px;
+  font-size: 1.8rem;
+  animation-delay: 1.2s;
+}
+@keyframes qfloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-14px) rotate(8deg);
+    opacity: 1;
+  }
+}
+.rising-heart {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.rising-glow {
+  position: absolute;
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 235, 0.85), rgba(244, 166, 193, 0.35) 35%, transparent 70%);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+.mystery-sparkles {
+  position: absolute !important;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+}
+.mystery-msg {
+  position: relative;
+  max-width: 640px;
+  margin-top: 18px;
+  padding: 44px clamp(22px, 5vw, 46px) 30px;
+  border-radius: 26px;
+  /* glass card with a gold → pink glowing border */
+  background:
+    linear-gradient(160deg, rgba(36, 30, 92, 0.82), rgba(58, 36, 96, 0.78)) padding-box,
+    linear-gradient(135deg, #ffe3a3, #f4a6c1 45%, #c3b0ea 75%, #ffe3a3) border-box;
+  border: 2px solid transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 40px -6px rgba(255, 180, 210, 0.45),
+    0 30px 60px -24px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(255, 214, 229, 0.06);
+  animation: noteGlow 4s ease-in-out infinite;
+}
+@keyframes noteGlow {
+  50% {
+    box-shadow:
+      0 0 60px 2px rgba(255, 190, 215, 0.55),
+      0 30px 60px -24px rgba(0, 0, 0, 0.6),
+      inset 0 0 40px rgba(255, 214, 229, 0.1);
+  }
+}
+.mystery-msg p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2.7vw, 1.4rem);
+  line-height: 1.7;
+  color: #f6ecff;
+  margin: 0 0 16px;
+}
+.mystery-msg p:first-of-type::first-letter {
+  font-family: var(--font-script);
+  font-size: 2.4em;
+  line-height: 0.8;
+  color: #ffe3a3;
+  padding-right: 2px;
+}
+.note-ribbon {
+  position: absolute;
+  left: 50%;
+  top: -26px;
+  translate: -50% 0;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff1f6, #f4a6c1 70%);
+  box-shadow:
+    0 0 0 4px rgba(255, 227, 163, 0.65),
+    0 8px 22px -6px rgba(244, 120, 160, 0.8);
+}
+.note-corner {
+  position: absolute;
+  font-size: 1rem;
+  color: #ffe3a3;
+  text-shadow: 0 0 10px rgba(255, 220, 150, 0.9);
+  opacity: 0.8;
+  animation: noteTwinkle 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.note-corner.tl {
+  left: 16px;
+  top: 14px;
+}
+.note-corner.tr {
+  right: 16px;
+  top: 14px;
+  color: #f4a6c1;
+  animation-delay: 0.6s;
+}
+.note-corner.bl {
+  left: 16px;
+  bottom: 14px;
+  color: #f4a6c1;
+  animation-delay: 1.2s;
+}
+.note-corner.br {
+  right: 16px;
+  bottom: 14px;
+  animation-delay: 1.8s;
+}
+@keyframes noteTwinkle {
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+.mystery-msg p.note-wish {
+  font-family: var(--font-script);
+  font-size: clamp(2.1rem, 6.4vw, 3rem);
+  line-height: 1.25;
+  margin: 8px 0 18px;
+  filter: drop-shadow(0 0 14px rgba(255, 214, 180, 0.55));
+}
+.note-wish .emoji {
+  display: inline-block;
+  font-family: system-ui, sans-serif;
+  font-size: 0.6em;
+  margin-left: 0.1em;
+  vertical-align: 0.1em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shiny,
+  .mystery-teaser .emoji {
+    animation: none;
+  }
+}
+.mystery-msg .glow-btn {
+  margin-top: 6px;
+}
+.mystery-msg.is-empty {
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding-top: 10px;
+}

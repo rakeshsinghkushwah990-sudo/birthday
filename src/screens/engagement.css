@@ -1,0 +1,62 @@
+.engage {
+  background: linear-gradient(180deg, #171a46 0%, #2f2766 30%, #5d3f88 58%, #a76a9f 82%, #d995b0 100%);
+}
+.engage-content {
+  padding-top: 86px;
+  justify-content: flex-start;
+}
+.engage .script-title {
+  font-size: clamp(2.1rem, 6.4vw, 4rem);
+  max-width: 860px;
+}
+.engage-card {
+  max-width: 680px;
+  padding: 22px clamp(18px, 4vw, 40px) 8px;
+  border-radius: var(--radius-lg);
+  background: rgba(30, 22, 70, 0.38);
+  border: 1px solid rgba(255, 214, 229, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
+}
+.engage-card p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.32rem);
+  line-height: 1.7;
+  color: #fbeefe;
+  margin: 0 0 16px;
+}
+.engage-date {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: #ffe3a3;
+  margin: 0 0 8px;
+  letter-spacing: 0.06em;
+}
+.promise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.promise-line {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 3.4vw, 1.7rem);
+  color: #fff3d6;
+  text-shadow: 0 0 18px rgba(255, 214, 160, 0.6);
+  margin: 6px 0 0;
+}
+.forever {
+  font-family: var(--font-script);
+  font-size: clamp(4.4rem, 17vw, 8.5rem);
+  line-height: 1.2;
+  padding: 0 24px;
+  background: linear-gradient(90deg, #ffe3a3, #ffd6e5, #fff6e0, #f4c76b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 214, 180, 0.65));
+  margin-bottom: 10px;
+}

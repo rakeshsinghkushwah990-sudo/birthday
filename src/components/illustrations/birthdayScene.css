@@ -1,0 +1,210 @@
+/* Arched bunting */
+.arch-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1px, 0.5vw, 5px);
+  padding: 0 clamp(4px, 2vw, 18px);
+  margin: 0 auto 6px;
+  max-width: 100%;
+}
+.arch-string {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  width: 100%;
+  height: 46px;
+  overflow: visible;
+  pointer-events: none;
+}
+.arch-gap {
+  width: clamp(6px, 2vw, 18px);
+}
+.arch-flag {
+  display: block;
+  transform-origin: 50% 0;
+}
+.arch-flag-inner {
+  display: grid;
+  place-items: start center;
+  width: clamp(21px, 6vw, 46px);
+  height: clamp(30px, 8vw, 60px);
+  padding-top: clamp(5px, 1.3vw, 10px);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.45), transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.5) 1.2px, transparent 1.6px) 0 0 / 8px 8px,
+    var(--c);
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 50% 100%, 0 72%);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 2.8vw, 1.6rem);
+  color: #b0476a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform-origin: 50% 0;
+  animation: flagSwing 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 3px 3px rgba(150, 70, 90, 0.18));
+}
+
+/* Balloon bunches */
+.balloon-bunch {
+  position: absolute;
+  top: 46px;
+  width: clamp(90px, 16vw, 190px);
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.balloon-bunch.left {
+  left: clamp(-30px, -1vw, 0px);
+}
+.balloon-bunch.right {
+  right: clamp(-30px, -1vw, 0px);
+  transform: scaleX(-1);
+}
+.bunch-balloon {
+  animation: bunchBob 4.5s ease-in-out infinite;
+}
+@keyframes bunchBob {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-8px);
+  }
+}
+
+/* Rose corners */
+.rose-corner {
+  position: absolute;
+  width: clamp(110px, 18vw, 220px);
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 6px 10px rgba(150, 60, 90, 0.18));
+}
+.rose-corner.bl {
+  left: -18px;
+  bottom: -14px;
+}
+.rose-corner.br {
+  right: -18px;
+  bottom: -14px;
+  transform: scaleX(-1);
+}
+.rose-corner.tl {
+  left: -30px;
+  top: 34%;
+  width: clamp(70px, 10vw, 130px);
+  transform: rotate(-70deg);
+  opacity: 0.9;
+}
+.rose-corner.tr {
+  right: -30px;
+  top: 40%;
+  width: clamp(70px, 10vw, 130px);
+  transform: scaleX(-1) rotate(-70deg);
+  opacity: 0.9;
+}
+
+/* String lights */
+.string-lights {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 160px;
+  pointer-events: none;
+}
+.warm-bulb {
+  animation: bulbTwinkle 2.4s ease-in-out infinite;
+}
+
+/* Bokeh */
+.bokeh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bokeh span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+  animation: bokehFloat ease-in-out infinite alternate;
+}
+@keyframes bokehFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate(20px, -26px) scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Wishing girl */
+.wishing-girl {
+  overflow: visible;
+  filter: drop-shadow(0 12px 18px rgba(150, 70, 100, 0.2));
+}
+.girl-body {
+  animation: girlBreath 4s ease-in-out infinite;
+  transform-origin: 110px 250px;
+}
+@keyframes girlBreath {
+  50% {
+    transform: scale(1.012) translateY(-1px);
+  }
+}
+.girl-head {
+  transform-origin: 110px 168px;
+  animation: girlTilt 6s ease-in-out infinite;
+}
+@keyframes girlTilt {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+.wish-sparkles path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glint 2.6s ease-in-out infinite;
+}
+.wish-sparkles path:nth-child(2) {
+  animation-delay: 0.9s;
+}
+.wish-sparkles path:nth-child(3) {
+  animation-delay: 1.7s;
+}
+.girl-hearts path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: diPop 3s ease-in-out infinite;
+}
+.girl-hearts path:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+@media (max-width: 640px) {
+  .balloon-bunch {
+    top: 62px;
+    width: 74px;
+  }
+  .balloon-bunch.left {
+    left: -26px;
+  }
+  .balloon-bunch.right {
+    right: -26px;
+  }
+}

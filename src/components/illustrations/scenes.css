@@ -1,0 +1,134 @@
+.scene-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Garden */
+.bulb {
+  animation: bulbTwinkle 2.5s ease-in-out infinite;
+}
+@keyframes bulbTwinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.glow-flower {
+  animation: bulbTwinkle 3s ease-in-out infinite;
+}
+
+/* Sunset */
+.sun-rays {
+  animation: raysTurn 80s linear infinite;
+}
+@keyframes raysTurn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sun {
+  filter: drop-shadow(0 0 30px rgba(255, 230, 160, 0.9));
+  animation: sunBreath 5s ease-in-out infinite;
+  transform-origin: 600px 520px;
+}
+@keyframes sunBreath {
+  50% {
+    transform: scale(1.04);
+  }
+}
+.road-dash {
+  animation: roadMove 1.6s linear infinite;
+}
+@keyframes roadMove {
+  to {
+    stroke-dashoffset: 64;
+  }
+}
+.lamp-glow {
+  animation: bulbTwinkle 3.6s ease-in-out infinite;
+}
+.wisps {
+  animation: wisp 30s ease-in-out infinite alternate;
+}
+@keyframes wisp {
+  to {
+    transform: translateX(40px);
+  }
+}
+.bird {
+  animation: birdFly 18s linear infinite;
+  opacity: 0;
+}
+@keyframes birdFly {
+  0% {
+    transform: translate(-60px, var(--by)) scale(0.8);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    transform: translate(1260px, calc(var(--by) - 120px)) scale(0.6);
+    opacity: 0;
+  }
+}
+.bird-wing {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: flap 0.5s ease-in-out infinite alternate;
+}
+@keyframes flap {
+  to {
+    transform: scaleY(-0.6);
+  }
+}
+
+/* Starry sky */
+.starry {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.starry-nebula {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(160, 120, 220, 0.25), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(236, 127, 163, 0.18), transparent 55%),
+    radial-gradient(ellipse at 60% 10%, rgba(120, 140, 255, 0.15), transparent 45%);
+  animation: nebula 24s ease-in-out infinite alternate;
+}
+@keyframes nebula {
+  to {
+    transform: translate(3%, -2%) scale(1.06);
+  }
+}
+.moon {
+  position: absolute;
+  top: 9%;
+  right: 10%;
+  width: clamp(54px, 9vw, 90px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fffdf3, #fdeccc 60%, #f3d9b0);
+  box-shadow:
+    inset -10px -8px 0 rgba(220, 190, 150, 0.35),
+    0 0 40px 10px rgba(255, 240, 200, 0.35);
+}
+.moon-glow {
+  position: absolute;
+  inset: -120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 210, 0.22), transparent 60%);
+}

@@ -1,0 +1,245 @@
+.gift-scene {
+  --H: calc(var(--s) * 0.72);
+  --L: calc(var(--s) * 1.1);
+  --lh: calc(var(--s) * 0.22);
+  --box-a: #f9bfd2;
+  --box-b: #ee93b2;
+  --box-side: #dc7a9c;
+  --ribbon: #f4c76b;
+  --ribbon-2: #e6a94f;
+  --bow-a: #ffd98a;
+  --bow-b: #e9a446;
+  --dots: rgba(255, 255, 255, 0.35);
+  position: relative;
+  width: var(--s);
+  height: calc(var(--s) * 1.35);
+  perspective: 900px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.gift-scene.theme-midnight {
+  --box-a: #4b4fa6;
+  --box-b: #2f3380;
+  --box-side: #262a6a;
+  --ribbon: #f4c76b;
+  --ribbon-2: #d9a24a;
+  --dots: rgba(255, 233, 166, 0.35);
+}
+.gift-scene:focus-visible {
+  outline: 3px dashed rgba(217, 85, 124, 0.6);
+  outline-offset: 10px;
+  border-radius: 20px;
+}
+
+.gift-rot {
+  position: absolute;
+  left: 0;
+  top: calc(var(--s) * 0.5);
+  width: var(--s);
+  height: var(--H);
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(-34deg);
+  animation: giftIdle 6s ease-in-out infinite;
+}
+@keyframes giftIdle {
+  0%,
+  100% {
+    transform: rotateX(-20deg) rotateY(-40deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(-17deg) rotateY(-24deg) translateY(-10px);
+  }
+}
+.gift-scene.shake .gift-rot {
+  animation:
+    giftIdle 6s ease-in-out infinite,
+    giftShake 3.2s ease-in-out infinite;
+}
+@keyframes giftShake {
+  0%,
+  80%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  84% {
+    translate: -4px 0;
+    rotate: -3deg;
+  }
+  88% {
+    translate: 4px -3px;
+    rotate: 3deg;
+  }
+  92% {
+    translate: -3px 0;
+    rotate: -2deg;
+  }
+  96% {
+    translate: 2px 0;
+    rotate: 1deg;
+  }
+}
+.gift-scene.is-open .gift-rot {
+  animation-play-state: paused;
+}
+
+.gift-body {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.gf,
+.lf {
+  position: absolute;
+  left: 0;
+  top: 0;
+  backface-visibility: visible;
+}
+.gf {
+  width: var(--s);
+  height: var(--H);
+  background:
+    linear-gradient(90deg, transparent 42%, var(--ribbon) 42%, var(--ribbon-2) 50%, var(--ribbon) 58%, transparent 58%),
+    radial-gradient(var(--dots) 2px, transparent 2.6px) 0 0 / 18px 18px,
+    linear-gradient(160deg, var(--box-a), var(--box-b));
+}
+.f-front {
+  transform: translateZ(calc(var(--s) / 2));
+}
+.f-back {
+  transform: rotateY(180deg) translateZ(calc(var(--s) / 2));
+  filter: brightness(0.8);
+}
+.f-right {
+  transform: rotateY(90deg) translateZ(calc(var(--s) / 2));
+  filter: brightness(0.82);
+}
+.f-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--s) / 2));
+  filter: brightness(0.9);
+}
+.f-bottom {
+  height: var(--s);
+  top: calc((var(--H) - var(--s)) / 2);
+  background: var(--box-side);
+  transform: rotateX(-90deg) translateZ(calc(var(--H) / 2));
+}
+.f-light {
+  height: var(--s);
+  top: calc((var(--H) - var(--s)) / 2);
+  background: radial-gradient(circle, #fffbe8 0%, #ffe3a3 35%, rgba(255, 210, 130, 0.4) 70%, transparent 100%);
+  transform: rotateX(90deg) translateZ(calc(var(--H) / 2 - 3px));
+  opacity: 0;
+  transition: opacity 0.8s 0.3s;
+}
+.gift-scene.is-open .f-light {
+  opacity: 1;
+}
+
+.gift-lid {
+  position: absolute;
+  width: var(--L);
+  height: var(--lh);
+  left: calc((var(--s) - var(--L)) / 2);
+  top: calc(var(--lh) * -1 + 3px);
+  transform-style: preserve-3d;
+}
+.lf {
+  width: var(--L);
+  height: var(--lh);
+  background:
+    linear-gradient(90deg, transparent 43%, var(--ribbon) 43%, var(--ribbon-2) 50%, var(--ribbon) 57%, transparent 57%),
+    linear-gradient(180deg, var(--box-a), var(--box-b));
+}
+.l-front {
+  transform: translateZ(calc(var(--L) / 2));
+}
+.l-back {
+  transform: rotateY(180deg) translateZ(calc(var(--L) / 2));
+  filter: brightness(0.8);
+}
+.l-right {
+  transform: rotateY(90deg) translateZ(calc(var(--L) / 2));
+  filter: brightness(0.82);
+}
+.l-left {
+  transform: rotateY(-90deg) translateZ(calc(var(--L) / 2));
+  filter: brightness(0.9);
+}
+.l-top {
+  height: var(--L);
+  top: calc((var(--lh) - var(--L)) / 2);
+  background:
+    linear-gradient(90deg, transparent 43%, var(--ribbon) 43%, var(--ribbon-2) 50%, var(--ribbon) 57%, transparent 57%),
+    linear-gradient(0deg, transparent 43%, var(--ribbon) 43%, var(--ribbon-2) 50%, var(--ribbon) 57%, transparent 57%),
+    radial-gradient(var(--dots) 2px, transparent 2.6px) 0 0 / 18px 18px,
+    linear-gradient(135deg, var(--box-a), var(--box-b));
+  transform: rotateX(90deg) translateZ(calc(var(--lh) / 2));
+}
+.bow {
+  position: absolute;
+  width: calc(var(--s) * 0.78);
+  height: calc(var(--s) * 0.47);
+  left: calc((var(--L) - var(--s) * 0.78) / 2);
+  top: calc(var(--s) * -0.47 + 6px);
+  overflow: visible;
+}
+.bow-b {
+  transform: rotateY(90deg);
+}
+
+.gift-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--s) * -0.02);
+  width: calc(var(--s) * 1.4);
+  height: calc(var(--s) * 0.22);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(120, 50, 90, 0.28), transparent 70%);
+  animation: shadowPulse 6s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  50% {
+    transform: translateX(-50%) scale(0.88);
+    opacity: 0.75;
+  }
+}
+
+.gift-rays {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: calc(var(--s) * 3.4);
+  height: calc(var(--s) * 3.4);
+  margin: calc(var(--s) * -1.7) 0 0 calc(var(--s) * -1.7);
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 236, 180, 0.55) 0deg 7deg, transparent 7deg 22deg);
+  mask-image: radial-gradient(circle, #000 10%, transparent 68%);
+  -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 68%);
+  opacity: 0;
+  transform: scale(0.2);
+  transition:
+    opacity 1s,
+    transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+.gift-scene.is-open .gift-rays {
+  opacity: 1;
+  transform: scale(1);
+  animation: raySpin 24s linear infinite;
+}
+@keyframes raySpin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.gift-content {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--s) * 0.55);
+  transform: translateX(-50%);
+  pointer-events: none;
+}

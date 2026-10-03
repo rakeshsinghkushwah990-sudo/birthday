@@ -1,0 +1,139 @@
+.birthday {
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(255, 244, 228, 0.95), transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(244, 166, 193, 0.55), transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(249, 201, 168, 0.6), transparent 50%),
+    linear-gradient(180deg, #fde3e4 0%, #fbd0d6 40%, #f7c2cf 70%, #f3b8cc 100%);
+}
+.birthday-content {
+  padding-top: 70px;
+  justify-content: flex-start;
+}
+.date-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--rose-deep);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-soft);
+}
+.birthday-title {
+  font-size: clamp(2.3rem, 7vw, 3.7rem);
+  margin: 8px 0 6px;
+  max-width: 1000px;
+  color: #b73a62;
+}
+.birthday-message {
+  position: relative;
+  max-width: 600px;
+  padding: 4px 12px 0;
+}
+.birthday-message::before {
+  content: '';
+  position: absolute;
+  inset: -30px -40px;
+  z-index: -1;
+  background: radial-gradient(ellipse, rgba(255, 248, 238, 0.85) 0%, rgba(255, 248, 238, 0.4) 50%, transparent 72%);
+  pointer-events: none;
+}
+.birthday-message p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.08rem, 2.4vw, 1.3rem);
+  line-height: 1.6;
+  color: #5a2d40;
+  margin: 0 0 10px;
+}
+
+/* Cake scene */
+.wish-scene {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 18px;
+  padding: 0 10px;
+}
+.scene-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  width: 120%;
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 232, 190, 0.8), transparent 65%);
+  pointer-events: none;
+}
+.scene-cake {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 4px;
+}
+.scene-table {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  z-index: 2;
+  width: min(440px, 104%);
+  height: 30px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff7ee, #f6dcd2);
+  box-shadow:
+    0 10px 24px -10px rgba(150, 70, 100, 0.4),
+    inset 0 -4px 0 rgba(236, 193, 179, 0.6);
+}
+.cake-sparkles {
+  position: absolute !important;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -30%);
+}
+
+.cake-pill {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 11px 22px;
+  max-width: 92vw;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 250, 246, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 26px -12px rgba(150, 60, 90, 0.45);
+  color: var(--rose-deep);
+  font-size: clamp(0.82rem, 2.4vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.35;
+  cursor: pointer;
+  animation: pillPulse 2.4s ease-in-out infinite;
+}
+@keyframes pillPulse {
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -12px rgba(217, 85, 124, 0.55);
+  }
+}
+
+.wish-next {
+  position: relative;
+  z-index: 3;
+  margin-top: 26px;
+}
+
+@media (max-width: 640px) {
+  .birthday-content {
+    padding-top: 66px;
+  }
+  .birthday-title {
+    margin-top: 6px;
+  }
+}
