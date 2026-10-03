@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, ChevronsDown, Heart, Sparkles } from 'lucide-react'
 import config from '../config'
 import { scrollToEl } from '../hooks/scroll'
+import { asset } from '../hooks/asset'
 import { HeartShape } from '../components/effects/Ambient'
 import GlowButton from '../components/ui/GlowButton'
 import './future.css'
@@ -41,7 +42,7 @@ function Painting({ src, focus = '50%', on = false, alt = '', eager = false }) {
   ]
   return (
     <div className={`painting ${on ? 'on' : ''}`}>
-      <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: String(focus).includes(' ') ? focus : `${focus} 50%` }} />
+      <img src={asset(src)} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: String(focus).includes(' ') ? focus : `${focus} 50%` }} />
       <div className="painting-glow" />
       <div className="painting-hearts" aria-hidden="true">
         {hearts.map(([l, t, s, d], i) => (

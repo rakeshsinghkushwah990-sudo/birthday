@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import config from '../config'
+import { asset } from './asset'
 
 const AudioCtx = createContext(null)
 export const useAudio = () => useContext(AudioCtx)
@@ -34,7 +35,7 @@ export function AudioProvider({ children }) {
   const target = config.media.musicVolume ?? 0.45
 
   useEffect(() => {
-    const m = new Audio(config.media.backgroundMusic)
+    const m = new Audio(asset(config.media.backgroundMusic))
     m.loop = true
     m.preload = 'auto'
     m.volume = 0

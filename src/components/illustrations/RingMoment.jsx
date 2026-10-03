@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { asset } from '../../hooks/asset'
 import './ringMoment.css'
 
 // The ring moment: a painted dusk hilltop. Tap the rings → the couple walk together,
 // he kneels, and the ring glides onto her finger. Pictures live in /public/images/engagement.
 const IMG = {
-  girl: '/images/engagement/girl.webp',
-  boy: '/images/engagement/boy.webp',
-  kneel: '/images/engagement/kneel.webp',
+  girl: asset('/images/engagement/girl.webp'),
+  boy: asset('/images/engagement/boy.webp'),
+  kneel: asset('/images/engagement/kneel.webp'),
 }
 
 const rnd = (a, b) => a + Math.random() * (b - a)
