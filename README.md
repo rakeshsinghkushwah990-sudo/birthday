@@ -51,9 +51,13 @@ npm run build
 
 - **Netlify:** drag the `dist` folder onto https://app.netlify.com/drop — or connect the repo (`netlify.toml` is included) — set the env var `BASE_PATH=/` there.
 - **Vercel:** `npx vercel` in this folder, or import the repo on vercel.com (`vercel.json` is included) — set the env var `BASE_PATH=/` there.
-- **GitHub Pages:** push the repo to GitHub, then go to **Settings → Pages → Build and deployment → Source** and pick **GitHub Actions**.
-  The included workflow (`.github/workflows/deploy.yml`) builds the site and publishes it on every push to `main`/`master`,
-  at `https://<your-username>.github.io/<repo-name>/`. (Don't use "Deploy from a branch" — that serves the raw source, which can't run.)
+- **GitHub Pages** (site at `https://<username>.github.io/birthday/`):
+  ```bash
+  npm run deploy
+  ```
+  This builds the site and publishes the `dist` folder to the `gh-pages` branch.
+  On GitHub: **Settings → Pages → Source: Deploy from a branch → Branch: `gh-pages` / `(root)`**.
+  Never `git push` your source code to the `gh-pages` branch — keep source on `main`.
 
 Then send the link to your favorite person. ❤️
 
